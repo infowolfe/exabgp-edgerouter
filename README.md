@@ -3,7 +3,7 @@ This README and software enable automated external blacklisting of ip addresses 
 
 ## Quickstart ExaBGP for ERLite ip-blocklisting
  * Setup EdgeRouter BGP (documented below if not already complete)
- * `git clone $path-to-repo`
+ * `git clone https://github.com/infowolfe/exabgp-edgerouter.git`
  * `pip install -r requirements.txt` or if you have native packages for your OS/Distro you're welcome to use them instead (Gentoo: `emerge -bqva exabgp ipy requests`)
  * Edit `conf.ini` to match EdgeRouter setup
  * Edit `blocklists_simple.py` to include preferred lists and to suit
