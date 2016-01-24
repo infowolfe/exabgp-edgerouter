@@ -41,12 +41,14 @@ def fetch():
 
 	for prefix in b:
 		if b.len() > 0 and b.__contains__(prefix) and not a.__contains__(prefix):
+			a.discard(prefix)
 			stdout.write('withdraw route ' + str(prefix) + nexthop)
 			stdout.flush()
 
 	for prefix in a:
-		stdout.write('announce route ' + str(prefix) + nexthop)
-		stdout.flush()
+		if a.__contains__(prefix) and not b.__contains__(prefix):
+			stdout.write('announce route ' + str(prefix) + nexthop)
+			stdout.flush()
 
 	b.add(a)
 
