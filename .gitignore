@@ -3,3 +3,4 @@
 *.wpr
 *.wpu
 *.pyc
+conf-local.ini

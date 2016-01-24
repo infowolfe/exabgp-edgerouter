@@ -11,6 +11,7 @@ import socket
 from sys import stdout
 from time import sleep
 
+
 a = IPSet()
 b = IPSet()
 # how long should we sleep in minutes?
@@ -19,14 +20,16 @@ expires = ''
 nexthop = ' next-hop 0.0.0.1 origin incomplete as-path [64666 64666 64666]\n'
 #nexthop = ' next-hop self community [64512:666]\n'
 
-blocklists = [ 'https://www.spamhaus.org/drop/drop.txt',
-               'https://www.spamhaus.org/drop/edrop.txt',
-               'https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt' ]
+blocklists = ['https://www.spamhaus.org/drop/drop.txt',
+              'https://www.spamhaus.org/drop/edrop.txt',
+              'https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt']
+
 
 def makeprefix(ip):
-	net = IP(ip,make_net=True)
+	net = IP(ip, make_net=True)
 	net.NoPrefixForSingleIp = None
 	return net
+
 
 def fetch():
 	a = IPSet([])
@@ -47,6 +50,7 @@ def fetch():
 
 	b.add(a)
 
+
 def linefilter(line):
 	if line.startswith(';'):
 		if line.startswith('; Expires:'):
@@ -59,6 +63,7 @@ def linefilter(line):
 	else:
 		ip = line.split(' ')[0].split(';')[0].split('#')[0].strip().decode()
 		return ip
+
 
 while True:
 	fetch()
